@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blue/flutter_blue.dart';
+import 'package:get/get.dart';
+import 'get/ble_off_controller.dart';
 
 class BluetoothOffScreen extends StatelessWidget {
-  const BluetoothOffScreen({Key? key, this.state}) : super(key: key);
-
-  final BluetoothState? state;
+  const BluetoothOffScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(BluetoothOffScreenController());
     return Scaffold(
       backgroundColor: Colors.lightBlue,
       body: Center(
@@ -20,7 +20,7 @@ class BluetoothOffScreen extends StatelessWidget {
               color: Colors.white54,
             ),
             Text(
-              'Bluetooth Adapter is ${state != null ? state.toString().substring(15) : 'not available'}.',
+              'Bluetooth Adapter is ${controller.bluetoothState.toString().substring(15)}.',
               style: Theme.of(context)
                   .primaryTextTheme
                   .titleMedium

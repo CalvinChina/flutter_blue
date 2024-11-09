@@ -24,7 +24,7 @@ class FlutterBlueApp extends StatelessWidget {
             if (state == BluetoothState.on) {
               return FindDevicesScreen();
             }
-            return BluetoothOffScreen(state: state);
+            return BluetoothOffScreen();
           }),
     );
   }
