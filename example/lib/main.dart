@@ -31,9 +31,10 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:flutter_blue_example/home/home_view.dart';
 import 'package:get/get.dart';
-import 'binding/init_bindings.dart';
-import 'view/home_view.dart';
+import 'package:flutter_blue_example/controller/device_controller.dart';
+import 'package:flutter_blue_example/pages/pages.dart';
 
 void main() {
   runApp(MyApp());
@@ -43,9 +44,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialBinding: InitBindings(), // 初始化绑定
-      home: HomeView(),
-      debugShowCheckedModeBanner: false,
+      title: 'Flutter Bluetooth Demo',
+      initialBinding:
+          BindingsBuilder(() => Get.lazyPut(() => DeviceController())),
+      home: HomeView(), // 直接使用HomeView作为首页
+      getPages: appRouters, // 使用appRouters中的路由
     );
   }
 }
